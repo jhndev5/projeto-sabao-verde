@@ -641,6 +641,7 @@ body {
 .vakinha-btn:hover {
   opacity: 0.95;
   transform: translateY(-1px);
+}
 
 .qr-box {
   width: 130px;

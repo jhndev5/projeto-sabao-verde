@@ -1,13 +1,4 @@
 function resetDoacaoTab() {
-  const custom = document.getElementById('valor-custom');
-  if (custom) custom.style.display = 'none';
-
-  document.querySelectorAll('.valor-btn').forEach(b => b.classList.remove('active'));
-  const defaultBtn = document.querySelector('.valor-btn:nth-of-type(2)');
-  if (defaultBtn) defaultBtn.classList.add('active');
-
-  atualizarImpacto(25);
-
   document.querySelectorAll('.pag-content').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.pag-tab').forEach(t => t.classList.remove('active'));
   const pixTab = document.getElementById('pag-pix');
@@ -37,32 +28,36 @@ function showPag(id, btn) {
 }
 
 function selecionarValor(btn, valor) {
-  document.querySelectorAll('.valor-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const custom = document.getElementById('valor-custom');
-  if (valor === 0) {
-    custom.style.display = 'block';
-    custom.focus();
-    custom.oninput = () => atualizarImpacto(Number(custom.value));
-  } else {
-    custom.style.display = 'none';
-    atualizarImpacto(valor);
-  }
+  // removido: seleção de valor para doação
 }
 
 function atualizarImpacto(valor) {
-  const litros = Math.round(valor / 5);
-  const agua = (litros * 1000000).toLocaleString('pt-BR');
   const txt = document.getElementById('impacto-txt');
-  if (txt && valor > 0) {
-    txt.innerHTML = `Com <strong>R$ ${valor}</strong> conseguimos coletar e processar <strong>${litros} litros de óleo</strong>, evitando a contaminação de <strong>${agua} litros de água</strong>.`;
+  if (txt) {
+    txt.innerHTML = 'Sua contribuição ajuda a coletar óleo, proteger rios e fortalecer a comunidade.';
   }
 }
 
-function copiarChave() {
-  const btn = document.querySelector('.copiar-btn');
-  btn.textContent = 'chave copiada!';
-  setTimeout(() => btn.textContent = 'copiar chave PIX', 2000);
+function copiarChave(button) {
+  if (!button) return;
+  const chave = '123.456.789-01';
+  navigator.clipboard.writeText(chave).then(() => {
+    const original = button.textContent;
+    button.textContent = 'chave copiada!';
+    setTimeout(() => button.textContent = original, 2000);
+  });
+}
+
+function copiarVakinhaLink(button) {
+  if (!button) return;
+  const vakinhaElement = document.getElementById('vakinha-link');
+  const link = vakinhaElement?.dataset?.vakinhaUrl || '';
+  if (!link) return;
+  navigator.clipboard.writeText(link).then(() => {
+    const original = button.textContent;
+    button.textContent = 'link copiado!';
+    setTimeout(() => button.textContent = original, 2000);
+  });
 }
 
 function fecharCookies(aceitar) {

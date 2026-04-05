@@ -51,7 +51,7 @@ function copiarChave(button) {
 function copiarVakinhaLink(button) {
   if (!button) return;
   const vakinhaElement = document.getElementById('vakinha-link');
-  const link = vakinhaElement?.dataset?.vakinhaUrl || '';
+  const link = vakinhaElement?.href || '';
   if (!link) return;
   navigator.clipboard.writeText(link).then(() => {
     const original = button.textContent;

@@ -204,44 +204,31 @@
     </div>
     <div class="doacao-body">
       <div class="doacao-card">
-        <div class="doacao-label">escolha um valor</div>
-        <div class="valores-grid">
-          <button class="valor-btn" onclick="selecionarValor(this, 10)">R$ 10</button>
-          <button class="valor-btn active" onclick="selecionarValor(this, 25)">R$ 25</button>
-          <button class="valor-btn" onclick="selecionarValor(this, 50)">R$ 50</button>
-          <button class="valor-btn" onclick="selecionarValor(this, 0)">outro</button>
-        </div>
-        <input id="valor-custom" class="input-field" type="number" placeholder="digite o valor em R$"
-          style="display:none;" />
-
-        <div class="sep"></div>
-
         <div class="doacao-label">forma de pagamento</div>
         <div class="pag-tabs">
           <button class="pag-tab active" onclick="showPag('pix', this)">PIX</button>
-          <button class="pag-tab" onclick="showPag('cartao', this)">Cartão de crédito</button>
+          <button class="pag-tab" onclick="showPag('vakinha', this)">Vakinha</button>
         </div>
 
         <!-- PIX -->
         <div id="pag-pix" class="pag-content active">
           <div class="pix-area">
-            <div class="qr-box">QR Code<br>(a definir)</div>
             <div class="pix-chave-box">chave PIX: <span>123.456.789-01</span></div>
-            <button class="copiar-btn" onclick="copiarChave()">copiar chave PIX</button>
+            <button class="copiar-btn" onclick="copiarChave(this)">copiar chave PIX</button>
           </div>
           <button class="doar-btn">confirmar doação via PIX</button>
         </div>
 
-        <!-- CARTÃO -->
-        <div id="pag-cartao" class="pag-content">
-          <input class="input-field" type="text" placeholder="número do cartão" maxlength="19" />
-          <div class="cartao-row">
-            <input class="input-field" type="text" placeholder="validade (MM/AA)" />
-            <input class="input-field" type="text" placeholder="CVV" maxlength="4" />
+        <!-- VAKINHA -->
+        <div id="pag-vakinha" class="pag-content">
+          <div class="vakinha-area">
+            <p>Faça sua doação diretamente na nossa Vakinha. Cada contribuição ajuda a ampliar a coleta, capacitar a comunidade e transformar óleo em renda.</p>
+            <div class="vakinha-link-box">
+              <!-- Defina o link da Vakinha no atributo data-vakinha-url abaixo quando estiver pronto -->
+              <button id="vakinha-link" class="vakinha-btn" type="button" data-vakinha-url="">Acessar Vakinha</button>
+              <button class="copiar-btn" onclick="copiarVakinhaLink(this)">copiar link da Vakinha</button>
+            </div>
           </div>
-          <input class="input-field" type="text" placeholder="nome no cartão" />
-          <input class="input-field" type="text" placeholder="CPF do titular" maxlength="14" />
-          <button class="doar-btn">confirmar doação via cartão</button>
         </div>
 
         <div class="seguro-txt">doação segura — você receberá um comprovante por e-mail</div>

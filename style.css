@@ -118,6 +118,9 @@ body {
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
   margin-right: 8px;
+  line-height: 1;
+  font-size: 18px;
+  padding: 0;
 }
 
 .theme-toggle:hover {

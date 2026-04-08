@@ -1,10 +1,23 @@
 function resetDoacaoTab() {
   document.querySelectorAll('.pag-content').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.pag-tab').forEach(t => t.classList.remove('active'));
-  const pixTab = document.getElementById('pag-pix');
-  const pixBtn = document.querySelector('.pag-tab:nth-of-type(1)');
-  if (pixTab) pixTab.classList.add('active');
-  if (pixBtn) pixBtn.classList.add('active');
+  
+  // Verificar se há uma aba salva
+  const abaAtiva = localStorage.getItem('abaAtiva');
+  const abaTitulo = abaAtiva ? document.getElementById('pag-' + abaAtiva) : null;
+  const abaBotao = abaAtiva ? document.querySelector(`[onclick="showPag('${abaAtiva}', this)"]`) : null;
+  
+  if (abaTitulo && abaBotao) {
+    // Restaurar aba salva
+    abaTitulo.classList.add('active');
+    abaBotao.classList.add('active');
+  } else {
+    // Padrão: pix
+    const pixTab = document.getElementById('pag-pix');
+    const pixBtn = document.querySelector('.pag-tab:nth-of-type(1)');
+    if (pixTab) pixTab.classList.add('active');
+    if (pixBtn) pixBtn.classList.add('active');
+  }
 }
 
 function showPage(id, btn) {
@@ -17,6 +30,9 @@ function showPage(id, btn) {
     resetDoacaoTab();
   }
 
+  // Salvar página ativa
+  localStorage.setItem('paginaAtiva', id);
+
   window.scrollTo(0, 0);
 }
 
@@ -25,6 +41,9 @@ function showPag(id, btn) {
   document.querySelectorAll('.pag-tab').forEach(b => b.classList.remove('active'));
   document.getElementById('pag-' + id).classList.add('active');
   btn.classList.add('active');
+  
+  // Salvar aba ativa
+  localStorage.setItem('abaAtiva', id);
 }
 
 function selecionarValor(btn, valor) {
@@ -92,4 +111,29 @@ themeToggle.addEventListener('click', () => {
   const next = document.documentElement.classList.contains('dark-theme') ? 'light' : 'dark';
   applyTheme(next);
   localStorage.setItem('theme', next);
+});
+
+// Restaurar página e aba ativa ao carregar
+window.addEventListener('load', () => {
+  // Aguardar um pouco para o DOM estar completamente pronto
+  setTimeout(() => {
+    const paginaAtiva = localStorage.getItem('paginaAtiva');
+    const abaAtiva = localStorage.getItem('abaAtiva');
+    
+    // Restaurar página ativa
+    if (paginaAtiva && paginaAtiva !== 'home') {
+      const pageBtn = document.querySelector(`[onclick="showPage('${paginaAtiva}', this)"]`);
+      if (pageBtn) {
+        showPage(paginaAtiva, pageBtn);
+      }
+    }
+    
+    // Restaurar aba ativa (se houver)
+    if (abaAtiva) {
+      const abaBtn = document.querySelector(`[onclick="showPag('${abaAtiva}', this)"]`);
+      if (abaBtn) {
+        showPag(abaAtiva, abaBtn);
+      }
+    }
+  }, 50);
 });

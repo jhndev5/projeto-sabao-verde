@@ -83,20 +83,18 @@ function closeMobileMenu() {
 }
 
 function initNavigation() {
-  function onNavClick(event) {
-    event.preventDefault();
-    const btn = event.currentTarget;
-    if (!btn || !btn.dataset.page) return;
-    showPage(btn.dataset.page, btn);
-  }
+  const navLinks = document.querySelector('.nav-links');
+  if (!navLinks) return;
 
-  document.querySelectorAll('.nav-link[data-page]').forEach(btn => {
-    if (window.PointerEvent) {
-      btn.addEventListener('pointerup', onNavClick);
-    } else {
-      btn.addEventListener('click', onNavClick);
-    }
-  });
+  const navigate = event => {
+    const btn = event.target.closest('.nav-link[data-page]');
+    if (!btn) return;
+    event.preventDefault();
+    showPage(btn.dataset.page, btn);
+  };
+
+  navLinks.addEventListener('click', navigate);
+  navLinks.addEventListener('touchend', navigate, { passive: false });
 }
 
 function copiarChave(button) {

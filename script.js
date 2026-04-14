@@ -83,10 +83,19 @@ function closeMobileMenu() {
 }
 
 function initNavigation() {
+  function onNavClick(event) {
+    event.preventDefault();
+    const btn = event.currentTarget;
+    if (!btn || !btn.dataset.page) return;
+    showPage(btn.dataset.page, btn);
+  }
+
   document.querySelectorAll('.nav-link[data-page]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      showPage(btn.dataset.page, btn);
-    });
+    if (window.PointerEvent) {
+      btn.addEventListener('pointerup', onNavClick);
+    } else {
+      btn.addEventListener('click', onNavClick);
+    }
   });
 }
 

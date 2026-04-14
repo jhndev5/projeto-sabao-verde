@@ -83,18 +83,17 @@ function closeMobileMenu() {
 }
 
 function initNavigation() {
-  const navLinks = document.querySelector('.nav-links');
-  if (!navLinks) return;
+  document.querySelectorAll('.nav-link[data-page]').forEach(btn => {
+    const navigate = event => {
+      event.preventDefault();
+      event.stopPropagation();
+      showPage(btn.dataset.page, btn);
+    };
 
-  const navigate = event => {
-    const btn = event.target.closest('.nav-link[data-page]');
-    if (!btn) return;
-    event.preventDefault();
-    showPage(btn.dataset.page, btn);
-  };
-
-  navLinks.addEventListener('click', navigate);
-  navLinks.addEventListener('touchend', navigate, { passive: false });
+    btn.addEventListener('click', navigate);
+    btn.addEventListener('touchend', navigate, { passive: false });
+    btn.addEventListener('pointerup', navigate);
+  });
 }
 
 function copiarChave(button) {

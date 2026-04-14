@@ -1,18 +1,39 @@
+function toggleFaq(btn) {
+  const resposta = btn.nextElementSibling;
+  const aberta = resposta.classList.contains('aberta');
+
+  // fecha todos
+  document.querySelectorAll('.faq-resposta').forEach(r => r.classList.remove('aberta'));
+  document.querySelectorAll('.faq-pergunta').forEach(b => b.classList.remove('aberta'));
+
+  // abre o clicado se estava fechado
+  if (!aberta) {
+    resposta.classList.add('aberta');
+    btn.classList.add('aberta');
+  }
+}
+
+function bindFaqTouch() {
+  document.querySelectorAll('.faq-pergunta').forEach(btn => {
+    btn.addEventListener('touchend', event => {
+      event.preventDefault();
+      toggleFaq(btn);
+    }, { passive: false });
+  });
+}
+
 function resetDoacaoTab() {
   document.querySelectorAll('.pag-content').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.pag-tab').forEach(t => t.classList.remove('active'));
-  
-  // Verificar se há uma aba salva
+
   const abaAtiva = localStorage.getItem('abaAtiva');
   const abaTitulo = abaAtiva ? document.getElementById('pag-' + abaAtiva) : null;
   const abaBotao = abaAtiva ? document.querySelector(`[onclick="showPag('${abaAtiva}', this)"]`) : null;
-  
+
   if (abaTitulo && abaBotao) {
-    // Restaurar aba salva
     abaTitulo.classList.add('active');
     abaBotao.classList.add('active');
   } else {
-    // Padrão: pix
     const pixTab = document.getElementById('pag-pix');
     const pixBtn = document.querySelector('.pag-tab:nth-of-type(1)');
     if (pixTab) pixTab.classList.add('active');
@@ -23,17 +44,16 @@ function resetDoacaoTab() {
 function showPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
+
+  const page = document.getElementById('page-' + id);
+  if (page) page.classList.add('active');
   if (btn) btn.classList.add('active');
 
-  if (id === 'doacao') {
-    resetDoacaoTab();
-  }
+  if (id === 'doacao') resetDoacaoTab();
 
-  // Salvar página ativa
   localStorage.setItem('paginaAtiva', id);
-
   window.scrollTo(0, 0);
+  closeMobileMenu();
 }
 
 function showPag(id, btn) {
@@ -41,20 +61,25 @@ function showPag(id, btn) {
   document.querySelectorAll('.pag-tab').forEach(b => b.classList.remove('active'));
   document.getElementById('pag-' + id).classList.add('active');
   btn.classList.add('active');
-  
-  // Salvar aba ativa
   localStorage.setItem('abaAtiva', id);
 }
 
-function selecionarValor(btn, valor) {
-  // removido: seleção de valor para doação
+function toggleMobileMenu() {
+  const menu = document.querySelector('.nav-links');
+  const toggleBtn = document.querySelector('.mobile-menu-toggle');
+  const backdrop = document.querySelector('.menu-backdrop');
+  const isOpen = menu.classList.toggle('open');
+  toggleBtn.classList.toggle('open', isOpen);
+  backdrop.classList.toggle('open', isOpen);
 }
 
-function atualizarImpacto(valor) {
-  const txt = document.getElementById('impacto-txt');
-  if (txt) {
-    txt.innerHTML = 'Sua contribuição ajuda a coletar óleo, proteger rios e fortalecer a comunidade.';
-  }
+function closeMobileMenu() {
+  const menu = document.querySelector('.nav-links');
+  const toggleBtn = document.querySelector('.mobile-menu-toggle');
+  const backdrop = document.querySelector('.menu-backdrop');
+  if (menu) menu.classList.remove('open');
+  if (toggleBtn) toggleBtn.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('open');
 }
 
 function copiarChave(button) {
@@ -113,27 +138,18 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('theme', next);
 });
 
-// Restaurar página e aba ativa ao carregar
 window.addEventListener('load', () => {
-  // Aguardar um pouco para o DOM estar completamente pronto
   setTimeout(() => {
     const paginaAtiva = localStorage.getItem('paginaAtiva');
-    const abaAtiva = localStorage.getItem('abaAtiva');
-    
-    // Restaurar página ativa
     if (paginaAtiva && paginaAtiva !== 'home') {
       const pageBtn = document.querySelector(`[onclick="showPage('${paginaAtiva}', this)"]`);
-      if (pageBtn) {
-        showPage(paginaAtiva, pageBtn);
-      }
+      if (pageBtn) showPage(paginaAtiva, pageBtn);
     }
-    
-    // Restaurar aba ativa (se houver)
+    const abaAtiva = localStorage.getItem('abaAtiva');
     if (abaAtiva) {
       const abaBtn = document.querySelector(`[onclick="showPag('${abaAtiva}', this)"]`);
-      if (abaBtn) {
-        showPag(abaAtiva, abaBtn);
-      }
+      if (abaBtn) showPag(abaAtiva, abaBtn);
     }
+    bindFaqTouch();
   }, 50);
 });

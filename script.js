@@ -82,6 +82,14 @@ function closeMobileMenu() {
   if (backdrop) backdrop.classList.remove('open');
 }
 
+function initNavigation() {
+  document.querySelectorAll('.nav-link[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      showPage(btn.dataset.page, btn);
+    });
+  });
+}
+
 function copiarChave(button) {
   if (!button) return;
   const chave = '123.456.789-01';
@@ -142,7 +150,7 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     const paginaAtiva = localStorage.getItem('paginaAtiva');
     if (paginaAtiva && paginaAtiva !== 'home') {
-      const pageBtn = document.querySelector(`[onclick="showPage('${paginaAtiva}', this)"]`);
+      const pageBtn = document.querySelector(`.nav-link[data-page="${paginaAtiva}"]`);
       if (pageBtn) showPage(paginaAtiva, pageBtn);
     }
     const abaAtiva = localStorage.getItem('abaAtiva');
@@ -151,5 +159,6 @@ window.addEventListener('load', () => {
       if (abaBtn) showPag(abaAtiva, abaBtn);
     }
     bindFaqTouch();
+    initNavigation();
   }, 50);
 });

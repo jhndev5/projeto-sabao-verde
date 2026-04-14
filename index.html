@@ -21,12 +21,13 @@
   </div>
 
   <div class="nav">
-    <div class="logo">— nome —</div>
+    <div class="logo" onclick="showPage('home', null)" style="cursor:pointer;">— nome —</div>
     <div style="display:flex; align-items:center; gap:8px;">
       <button class="theme-toggle" aria-label="Alternar tema">🌍</button>
       <div class="nav-links">
-        <button class="nav-link active" onclick="showPage('home', this)">sobre</button>
+        <button class="nav-link" onclick="showPage('sobre', this)">sobre nós</button>
         <button class="nav-link" onclick="showPage('como', this)">como funciona</button>
+        <button class="nav-link" onclick="showPage('faq', this)">faq</button>
         <button class="nav-link" onclick="showPage('loja', this)">loja</button>
         <button class="nav-link doacao-link" onclick="showPage('doacao', this)">doação</button>
       </div>
@@ -118,35 +119,9 @@
           sua casa com qualidade.</p>
         <div class="soap-grid">
           <div class="soap-card">
-            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                <path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 10 5-3 8-6 8-10 0-5-4-8-8-8z" />
-              </svg></div>
+            <img src="images/sabonete.jpg" alt="Sabão em barra" class="soap-image">
             <h3>Sabão em barra</h3>
             <p>Multiuso, para roupas, louças e limpeza geral da casa.</p>
-          </div>
-          <div class="soap-card">
-            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                <path d="M9 3h6l1 9H8L9 3z" />
-                <path d="M8 12s0 9 4 9 4-9 4-9" />
-              </svg></div>
-            <h3>Detergente líquido</h3>
-            <p>Fórmula concentrada para louças com eficiência e baixo custo.</p>
-          </div>
-          <div class="soap-card">
-            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                <circle cx="12" cy="12" r="8" />
-                <path d="M12 8v4l3 3" />
-              </svg></div>
-            <h3>Sabonete natural</h3>
-            <p>Com óleos essenciais e ingredientes naturais para o cuidado da pele.</p>
-          </div>
-          <div class="soap-card">
-            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                <path d="M12 2v6M8 4l4 4 4-4" />
-                <rect x="6" y="8" width="12" height="14" rx="2" />
-              </svg></div>
-            <h3>Kit presente</h3>
-            <p>Conjunto sustentável ideal para presentear com propósito.</p>
           </div>
         </div>
       </div>
@@ -155,11 +130,8 @@
         <p>Compre um sabão, retire óleo dos rios e apoie produtores locais — tudo ao mesmo tempo.</p>
         <ul style="max-width:480px;margin:0 auto 18px;text-align:left;color:#c8f3df;font-size:13px;">
           <li>Sabão em barra: multiuso para roupas, louças e limpeza geral.</li>
-          <li>Detergente líquido: fórmula concentrada e econômico.</li>
-          <li>Sabonete natural: óleos essenciais para cuidado da pele.</li>
-          <li>Kit presente: embalagem sustentável com propósito.</li>
         </ul>
-        <a class="cta-btn" href="https://example.com/loja" target="_blank" rel="noopener noreferrer">acessar a loja</a>
+        <a class="cta-btn" href="#" onclick="showPage('loja', null); return false;">acessar a loja</a>
         <div class="cta-sub">cada compra tem impacto real na sua comunidade</div>
       </div>
       <div class="footer">
@@ -167,7 +139,87 @@
         <div class="footer-links">
           <button class="footer-link" onclick="showPage('privacidade', null)">Política de Privacidade</button>
           <span style="color:var(--border)">|</span>
-          <a class="footer-link" href="email">e-mail</a>
+          <a class="footer-link" href="mailto:contato@nomeadefinir.com.br">e-mail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOBRE NÓS -->
+  <div id="page-sobre" class="page">
+    <div class="page-wrapper">
+      <div class="hero">
+        <div class="hero-badge">quem somos</div>
+        <h1>Um projeto nascido da vontade de mudar</h1>
+        <p>Somos estudantes que acreditam que pequenas ações comunitárias podem gerar grandes impactos ambientais e sociais.</p>
+      </div>
+      <div class="section">
+        <div class="section-tag">nossa história</div>
+        <h2>Como tudo começou</h2>
+        <p>O projeto nasceu dentro de uma disciplina de empreendedorismo social, quando percebemos que um dos resíduos mais comuns nas cozinhas brasileiras — o óleo de cozinha usado — era também um dos mais prejudiciais ao meio ambiente quando descartado incorretamente.</p>
+        <p>A ideia foi simples: e se transformássemos esse problema em solução? A saponificação, processo químico que converte óleo em sabão, já era conhecida há séculos. Nossa proposta foi torná-la acessível, comunitária e geradora de renda.</p>
+      </div>
+      <div class="divider"></div>
+      <div class="process-section">
+        <div class="section-tag">missão, visão e valores</div>
+        <h2>O que nos guia</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num" style="background:#0F6E56;">🎯</div>
+            <div class="step-text">
+              <h3>Missão</h3>
+              <p>Transformar óleo residual em sabão artesanal, promovendo educação ambiental, geração de renda e fortalecimento da economia circular nas comunidades.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num" style="background:#0F6E56;">🌱</div>
+            <div class="step-text">
+              <h3>Visão</h3>
+              <p>Ser referência em reciclagem de óleo e produção sustentável de produtos de limpeza, expandindo o impacto para múltiplas comunidades.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num" style="background:#0F6E56;">💚</div>
+            <div class="step-text">
+              <h3>Valores</h3>
+              <p>Sustentabilidade, transparência, impacto social real, educação ambiental e valorização da comunidade local.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-tag">como medimos o impacto</div>
+        <h2>Resultados que importam</h2>
+        <p>Acompanhamos nosso crescimento por meio de métricas claras e transparentes, compartilhadas com a comunidade e parceiros.</p>
+        <div class="soap-grid">
+          <div class="soap-card">
+            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 10 5-3 8-6 8-10 0-5-4-8-8-8z"/></svg></div>
+            <h3>Litros coletados</h3>
+            <p>Monitoramos cada litro de óleo recolhido da comunidade mensalmente.</p>
+          </div>
+          <div class="soap-card">
+            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 3"/></svg></div>
+            <h3>Água preservada</h3>
+            <p>Cada litro coletado representa 1 milhão de litros de água protegidos.</p>
+          </div>
+          <div class="soap-card">
+            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 3h6l1 9H8L9 3z"/><path d="M8 12s0 9 4 9 4-9 4-9"/></svg></div>
+            <h3>Barras produzidas</h3>
+            <p>Acompanhamos a produção e venda de cada barra de sabão artesanal.</p>
+          </div>
+          <div class="soap-card">
+            <div class="soap-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2v6M8 4l4 4 4-4"/><rect x="6" y="8" width="12" height="14" rx="2"/></svg></div>
+            <h3>Pessoas envolvidas</h3>
+            <p>Contamos doadores, produtores e compradores como parte do nosso impacto.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        — nome — © 2026
+        <div class="footer-links">
+          <button class="footer-link" onclick="showPage('privacidade', null)">Política de Privacidade</button>
+          <span style="color:var(--border)">|</span>
+          <a class="footer-link" href="mailto:contato@nomeadefinir.com.br">e-mail</a>
         </div>
       </div>
     </div>
@@ -176,10 +228,172 @@
   <!-- COMO FUNCIONA -->
   <div id="page-como" class="page">
     <div class="page-wrapper">
-      <div class="section" style="padding-top:48px;">
-        <div class="section-tag">em breve</div>
-        <h2>Conteúdo desta seção em construção</h2>
-        <p>Esta página ainda será preenchida com mais detalhes sobre o processo.</p>
+      <div class="hero">
+        <div class="hero-badge">o processo</div>
+        <h1>Do óleo à barra de sabão</h1>
+        <p>Entenda cada etapa da transformação — da coleta na sua cozinha até o produto nas suas mãos.</p>
+      </div>
+      <div class="process-section">
+        <div class="section-tag">etapas detalhadas</div>
+        <h2>Como o sabão é produzido</h2>
+        <p>O processo de saponificação é seguro, acessível e pode ser feito em pequena escala com materiais simples.</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text">
+              <h3>Coleta comunitária</h3>
+              <p>O óleo usado é coletado em pontos fixos no bairro — mercados, escolas e restaurantes parceiros. Qualquer pessoa pode contribuir guardando o óleo em garrafas PET limpas.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text">
+              <h3>Filtragem e classificação</h3>
+              <p>O óleo coletado é filtrado para remover resíduos de alimentos. Óleos muito degradados são separados para outros fins, como biodiesel.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text">
+              <h3>Saponificação</h3>
+              <p>O óleo filtrado é misturado com soda cáustica (NaOH) e água em proporções calculadas. A reação química transforma os ingredientes em sabão bruto. Todo o processo usa EPI e medidas de segurança.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-text">
+              <h3>Cura</h3>
+              <p>O sabão descansa em formas por até 4 semanas. Nesse período, a reação química se completa, o pH estabiliza e o produto fica seguro para uso na pele e tecidos.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-text">
+              <h3>Corte, embalagem e venda</h3>
+              <p>As barras são cortadas, embaladas artesanalmente e vendidas em feiras, mercados locais e pelo site. Parte da renda é reinvestida na expansão da coleta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-tag">parcerias e coleta</div>
+        <h2>Como participar como doador de óleo</h2>
+        <p>Você não precisa comprar nada para fazer parte. Basta guardar o óleo usado em uma garrafa PET limpa e entregar em um dos nossos pontos de coleta. Em breve divulgaremos os endereços parceiros na sua cidade.</p>
+        <div class="impact-card" style="border-left-color:#0F6E56; background:#E1F5EE;">
+          <p style="color:#0F4F40;"><strong>Dica:</strong> Espere o óleo esfriar completamente antes de guardar na garrafa. Não misture com água nem outros líquidos.</p>
+        </div>
+      </div>
+      <div class="footer">
+        — nome — © 2026
+        <div class="footer-links">
+          <button class="footer-link" onclick="showPage('privacidade', null)">Política de Privacidade</button>
+          <span style="color:var(--border)">|</span>
+          <a class="footer-link" href="mailto:contato@nomeadefinir.com.br">e-mail</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="page-faq" class="page">
+    <div class="page-wrapper">
+      <div class="hero">
+        <div class="hero-badge">dúvidas frequentes</div>
+        <h1>Perguntas frequentes</h1>
+        <p>Tudo que você precisa saber sobre o projeto, o sabão e como participar.</p>
+      </div>
+      <div class="section">
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              O sabão artesanal tem a mesma qualidade do industrial?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>Sim. O sabão produzido por saponificação a frio mantém a glicerina naturalmente presente no óleo, o que o torna até mais hidratante que muitos sabões industriais.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              Como posso entregar meu óleo usado?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>Guarde o óleo usado em uma garrafa PET limpa após ele esfriar. Em breve teremos pontos de coleta divulgados na cidade. Você também pode entrar em contato pelo e-mail para combinar uma entrega direta.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              Qualquer tipo de óleo pode ser usado?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>Aceitamos óleo de soja, girassol, milho, canola e outros óleos vegetais usados em frituras e refogados. Não aceitamos óleo misturado com água, muito queimado ou com excesso de resíduos de alimentos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              Por que não posso jogar o óleo na pia?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>O óleo forma uma película impermeável nos rios e córregos, impedindo a entrada de oxigênio e matando a vida aquática. Apenas 1 litro de óleo contamina até 1 milhão de litros de água. Além disso, solidifica nas tubulações causando entupimentos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              Como posso comprar o sabão?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>Em breve nossa loja estará disponível aqui no site. Por enquanto você pode entrar em contato pelo e-mail ou acompanhar nossas redes sociais para saber sobre feiras e pontos de venda locais.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              Posso fazer parte do projeto como produtor?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>Sim! Queremos expandir a produção envolvendo mais pessoas da comunidade. Se tiver interesse em aprender a produzir sabão e gerar renda com isso, entre em contato. Oferecemos capacitação e suporte.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              O projeto aceita doações financeiras?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>Sim! As doações ajudam a ampliar os pontos de coleta, comprar materiais de produção e capacitar mais pessoas. Você pode doar via PIX ou Vakinha diretamente na aba de doação do site.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-pergunta" onclick="toggleFaq(this)">
+              O projeto tem apoio de alguma instituição?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-resposta">
+              <p>O projeto nasceu dentro de uma disciplina universitária de empreendedorismo social e está alinhado com a Política Nacional de Resíduos Sólidos. Estamos em busca de parcerias com prefeituras, cooperativas e o SEBRAE Social.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="footer">
+        — nome — © 2026
+        <div class="footer-links">
+          <button class="footer-link" onclick="showPage('privacidade', null)">Política de Privacidade</button>
+          <span style="color:var(--border)">|</span>
+          <a class="footer-link" href="mailto:contato@nomeadefinir.com.br">e-mail</a>
+        </div>
       </div>
     </div>
   </div>
@@ -209,17 +423,16 @@
           <button class="pag-tab active" onclick="showPag('pix', this)">PIX</button>
           <button class="pag-tab" onclick="showPag('vakinha', this)">Vakinha</button>
         </div>
-
-        <!-- PIX -->
         <div id="pag-pix" class="pag-content active">
           <div class="pix-area">
             <div class="pix-chave-box">chave PIX: <span>123.456.789-01</span></div>
             <button class="copiar-btn" onclick="copiarChave(this)">copiar chave PIX</button>
           </div>
-          <button class="doar-btn">confirmar doação via PIX</button>
+          <div class="pix-qrcode-box">
+            <img src="images/qrcode.png" alt="QR code PIX" class="pix-qrcode">
+          
+          </div>
         </div>
-
-        <!-- VAKINHA -->
         <div id="pag-vakinha" class="pag-content">
           <div class="vakinha-area">
             <p>Faça sua doação diretamente na nossa Vakinha. Cada contribuição ajuda a ampliar a coleta, capacitar a comunidade e transformar óleo em renda.</p>
@@ -229,12 +442,8 @@
             </div>
           </div>
         </div>
-
-        <div class="seguro-txt">doação segura — você receberá um comprovante por e-mail</div>
-
         <div class="impacto-doacao">
-          <p id="impacto-txt">Com <strong>R$ 25</strong> conseguimos coletar e processar <strong>5 litros de
-              óleo</strong>, evitando a contaminação de <strong>5.000.000 litros de água</strong>.</p>
+          <p id="impacto-txt">Sua contribuição ajuda a coletar óleo, proteger rios e fortalecer a comunidade.</p>
         </div>
       </div>
     </div>
@@ -243,7 +452,7 @@
       <div class="footer-links">
         <button class="footer-link" onclick="showPage('privacidade', null)">Política de Privacidade</button>
         <span style="color:var(--border)">|</span>
-        <a class="footer-link" href="email">e-mail</a>
+        <a class="footer-link" href="mailto:contato@nomeadefinir.com.br">e-mail</a>
       </div>
     </div>
   </div>
@@ -258,12 +467,10 @@
           Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</p>
       </div>
       <h2>1. Quem somos</h2>
-      <p>— nome —, projeto de empreendedorismo social com sede em — Cidade —, responsável pelo
-        tratamento dos dados coletados neste site.</p>
-      <p>Encarregado de dados (DPO): <a href="mailto:email">e-mail</a></p>
+      <p>— nome —, projeto de empreendedorismo social com sede em — Cidade —, responsável pelo tratamento dos dados coletados neste site.</p>
+      <p>Encarregado de dados (DPO): <a href="mailto:contato@nomeadefinir.com.br">contato@nomeadefinir.com.br</a></p>
       <h2>2. Quais dados coletamos</h2>
       <ul>
-        <li>Nome completo e CPF (somente na aba de doação via cartão)</li>
         <li>Endereço de e-mail (para envio de comprovante de doação)</li>
         <li>Dados de pagamento — processados por gateway seguro, não armazenamos número de cartão</li>
         <li>Dados de navegação via cookies (veja seção 5)</li>
@@ -276,40 +483,27 @@
         <li>Cumprir obrigações legais e fiscais</li>
       </ul>
       <h2>4. Base legal para o tratamento</h2>
-      <p>O tratamento dos seus dados é realizado com base no seu <strong>consentimento</strong> (Art. 7º, I da LGPD) e
-        na <strong>execução de contrato</strong> quando você realiza uma doação (Art. 7º, V da LGPD).</p>
+      <p>O tratamento dos seus dados é realizado com base no seu <strong>consentimento</strong> (Art. 7º, I da LGPD) e na <strong>execução de contrato</strong> quando você realiza uma doação (Art. 7º, V da LGPD).</p>
       <h2>5. Cookies</h2>
-      <p>Utilizamos cookies essenciais para o funcionamento do site (como preferência de tema claro/escuro). Você pode
-        recusar cookies não essenciais pelo banner exibido ao acessar o site. A recusa não impede o uso das
-        funcionalidades principais.</p>
+      <p>Utilizamos cookies essenciais para o funcionamento do site (como preferência de tema claro/escuro). Você pode recusar cookies não essenciais pelo banner exibido ao acessar o site.</p>
       <h2>6. Compartilhamento de dados</h2>
-      <p>Seus dados não são vendidos a terceiros. Podemos compartilhá-los apenas com:</p>
-      <ul>
-        <li>Gateway de pagamento, para processar doações com segurança</li>
-        <li>Autoridades públicas, quando exigido por lei</li>
-      </ul>
+      <p>Seus dados não são vendidos a terceiros. Podemos compartilhá-los apenas com gateway de pagamento e autoridades públicas quando exigido por lei.</p>
       <h2>7. Por quanto tempo guardamos seus dados</h2>
-      <p>Dados de doação são mantidos pelo prazo de 5 anos para fins fiscais e contábeis. Dados de navegação via cookies
-        são eliminados em até 12 meses.</p>
+      <p>Dados de doação são mantidos pelo prazo de 5 anos para fins fiscais e contábeis. Dados de navegação via cookies são eliminados em até 12 meses.</p>
       <h2>8. Seus direitos como titular</h2>
-      <p>De acordo com a LGPD, você tem direito a:</p>
       <ul>
         <li>Confirmar se tratamos seus dados</li>
         <li>Acessar, corrigir ou excluir seus dados</li>
         <li>Revogar seu consentimento a qualquer momento</li>
         <li>Solicitar portabilidade dos dados</li>
       </ul>
-      <p>Para exercer seus direitos, entre em contato: <a href="mailto:email">e-mail</a></p>
+      <p>Para exercer seus direitos: <a href="mailto:contato@nomeadefinir.com.br">contato@nomeadefinir.com.br</a></p>
       <h2>9. Segurança</h2>
-      <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda ou
-        vazamento. Pagamentos são processados via conexão criptografada (HTTPS).</p>
+      <p>Adotamos medidas técnicas para proteger seus dados. Pagamentos são processados via conexão criptografada (HTTPS).</p>
       <h2>10. Alterações nesta política</h2>
-      <p>Podemos atualizar esta política periodicamente. A versão mais recente estará sempre disponível nesta página com
-        a data de atualização.</p>
+      <p>Podemos atualizar esta política periodicamente. A versão mais recente estará sempre disponível nesta página.</p>
       <h2>11. Contato</h2>
-      <p>Dúvidas sobre esta política ou sobre seus dados? Fale conosco:<br>
-        <a href="mailto:email">e-mail</a>
-      </p>
+      <p><a href="mailto:contato@nomeadefinir.com.br">contato@nomeadefinir.com.br</a></p>
     </div>
     <div class="footer">
       — nome — © 2026
@@ -321,5 +515,4 @@
 
   <script src="script.js"></script>
 </body>
-
 </html>

@@ -615,9 +615,12 @@ body {
 
 @media (max-width: 480px) {
   .nav { flex-direction: column; align-items: stretch; }
-  .nav-links { overflow-x: auto; white-space: nowrap; justify-content: flex-start; margin-top: 0; }
+  .nav-links { flex-direction: column; overflow-x: visible; white-space: normal; justify-content: flex-start; margin-top: 0; gap: 8px; align-items: stretch; }
+  .nav-link { width: 100%; text-align: center; }
   .hero h1, .doacao-hero h1 { font-size: 20px; }
   .privacidade-body h1 { font-size: 18px; }
   .faq-pergunta { font-size: 15px; min-height: 48px; padding: 18px 20px; }
   .faq-icon { font-size: 24px; }
+  .stats-row { grid-template-columns: 1fr; gap: 8px; }
+  .soap-grid { grid-template-columns: 1fr; gap: 8px; }
 }

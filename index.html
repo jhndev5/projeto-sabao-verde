@@ -21,8 +21,13 @@
   </div>
 
   <div class="nav">
-    <div class="logo" onclick="showPage('home', null)" style="cursor:pointer;">— nome —</div>
-    <div style="display:flex; align-items:center; gap:8px;">
+    <button class="mobile-menu-toggle" aria-label="Abrir menu" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="logo" onclick="showPage('home', null)">— nome —</div>
+    <div class="nav-right-group">
       <button class="theme-toggle" aria-label="Alternar tema">🌍</button>
       <div class="nav-links">
         <button class="nav-link" onclick="showPage('sobre', this)">sobre nós</button>
@@ -33,6 +38,7 @@
       </div>
     </div>
   </div>
+  <div class="menu-backdrop" onclick="closeMobileMenu()"></div>
 
   <!-- HOME -->
   <div id="page-home" class="page active">

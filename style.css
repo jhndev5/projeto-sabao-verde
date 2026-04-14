@@ -65,6 +65,8 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 5px;
+  z-index: 120;
+  touch-action: manipulation;
 }
 
 .mobile-menu-toggle span {
@@ -139,6 +141,7 @@ body {
   display: flex;
   gap: 12px;
   align-items: center;
+  pointer-events: auto;
 }
 
 .nav-link {
@@ -153,6 +156,7 @@ body {
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
   font-family: var(--font-sans);
+  touch-action: manipulation;
 }
 
 .nav-link:hover {
@@ -705,6 +709,7 @@ body {
   }
   .nav-links.open {
     transform: translateX(0);
+    pointer-events: auto;
   }
   .nav-link {
     width: 100%;

@@ -132,12 +132,11 @@ body {
   color: var(--text-secondary);
   font-style: italic;
   cursor: pointer;
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .logo:hover {
   color: var(--accent);
-  transform: scale(1.02);
 }
 
 .nav-links {
@@ -368,6 +367,12 @@ body {
 .soap-card p { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
 
 .cta-section { padding: 40px 24px; background: #085041; text-align: center; }
+.cta-section ul {
+  list-style-position: inside;
+  padding-left: 18px;
+  margin: 0 auto 18px;
+  text-align: left;
+}
 .cta-section h2 { font-size: 20px; font-weight: 500; color: #E1F5EE; margin-bottom: 10px; line-height: 1.3; }
 .cta-section p { font-size: 14px; color: #9FE1CB; margin-bottom: 24px; line-height: 1.6; }
 

@@ -28,13 +28,13 @@
     </button>
     <div class="logo" onclick="showPage('home', null)">— nome —</div>
     <div class="nav-right-group">
-      <button type="button" class="theme-toggle" aria-label="Alternar tema">🌍</button>
       <div class="nav-links">
-        <button type="button" class="nav-link" data-page="sobre">sobre nós</button>
-        <button type="button" class="nav-link" data-page="como">como funciona</button>
-        <button type="button" class="nav-link" data-page="faq">faq</button>
-        <button type="button" class="nav-link" data-page="loja">loja</button>
-        <button type="button" class="nav-link doacao-link" data-page="doacao">doação</button>
+        <button type="button" class="nav-link" data-page="sobre" onclick="showPage('sobre', this)">sobre nós</button>
+        <button type="button" class="nav-link" data-page="como" onclick="showPage('como', this)">como funciona</button>
+        <button type="button" class="nav-link" data-page="faq" onclick="showPage('faq', this)">faq</button>
+        <button type="button" class="nav-link" data-page="loja" onclick="showPage('loja', this)">loja</button>
+        <button type="button" class="nav-link doacao-link" data-page="doacao" onclick="showPage('doacao', this)">doação</button>
+        <button type="button" class="theme-toggle" aria-label="Alternar tema">🌍</button>
       </div>
     </div>
   </div>

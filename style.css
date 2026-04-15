@@ -112,7 +112,7 @@ body {
   top: 0;
   bottom: 0;
   right: 0;
-  left: min(80%, 320px); /* only covers the area to the RIGHT of the menu */
+  left: min(80%, 320px);
   background: rgba(0, 0, 0, 0.35);
   z-index: 150;
   opacity: 0;
@@ -709,6 +709,7 @@ body {
     transition: transform 0.25s ease;
     z-index: 200;
     box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
+    pointer-events: none; /* prevent blocking taps when menu is closed */
   }
   .nav-links.open {
     transform: translateX(0);

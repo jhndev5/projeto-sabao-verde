@@ -65,7 +65,7 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  z-index: 120;
+  z-index: 210;
   touch-action: manipulation;
 }
 
@@ -109,9 +109,12 @@ body {
 .menu-backdrop {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: min(80%, 320px); /* only covers the area to the RIGHT of the menu */
   background: rgba(0, 0, 0, 0.35);
-  z-index: 104;
+  z-index: 150;
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
@@ -704,7 +707,7 @@ body {
     margin-top: 0;
     transform: translateX(-110%);
     transition: transform 0.25s ease;
-    z-index: 105;
+    z-index: 200;
     box-shadow: 8px 0 30px rgba(0, 0, 0, 0.12);
   }
   .nav-links.open {

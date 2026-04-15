@@ -13,15 +13,6 @@ function toggleFaq(btn) {
   }
 }
 
-function bindFaqTouch() {
-  document.querySelectorAll('.faq-pergunta').forEach(btn => {
-    btn.addEventListener('touchend', event => {
-      event.preventDefault();
-      toggleFaq(btn);
-    }, { passive: false });
-  });
-}
-
 function resetDoacaoTab() {
   document.querySelectorAll('.pag-content').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.pag-tab').forEach(t => t.classList.remove('active'));
@@ -82,20 +73,6 @@ function closeMobileMenu() {
   if (backdrop) backdrop.classList.remove('open');
 }
 
-function initNavigation() {
-  document.querySelectorAll('.nav-link[data-page]').forEach(btn => {
-    const navigate = event => {
-      event.preventDefault();
-      event.stopPropagation();
-      showPage(btn.dataset.page, btn);
-    };
-
-    btn.addEventListener('click', navigate);
-    btn.addEventListener('touchend', navigate, { passive: false });
-    btn.addEventListener('pointerup', navigate);
-  });
-}
-
 function copiarChave(button) {
   if (!button) return;
   const chave = '123.456.789-01';
@@ -153,18 +130,14 @@ themeToggle.addEventListener('click', () => {
 });
 
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    const paginaAtiva = localStorage.getItem('paginaAtiva');
-    if (paginaAtiva && paginaAtiva !== 'home') {
-      const pageBtn = document.querySelector(`.nav-link[data-page="${paginaAtiva}"]`);
-      if (pageBtn) showPage(paginaAtiva, pageBtn);
-    }
-    const abaAtiva = localStorage.getItem('abaAtiva');
-    if (abaAtiva) {
-      const abaBtn = document.querySelector(`[onclick="showPag('${abaAtiva}', this)"]`);
-      if (abaBtn) showPag(abaAtiva, abaBtn);
-    }
-    bindFaqTouch();
-    initNavigation();
-  }, 50);
+  const paginaAtiva = localStorage.getItem('paginaAtiva');
+  if (paginaAtiva && paginaAtiva !== 'home') {
+    const pageBtn = document.querySelector(`.nav-link[data-page="${paginaAtiva}"]`);
+    if (pageBtn) showPage(paginaAtiva, pageBtn);
+  }
+  const abaAtiva = localStorage.getItem('abaAtiva');
+  if (abaAtiva) {
+    const abaBtn = document.querySelector(`[onclick="showPag('${abaAtiva}', this)"]`);
+    if (abaBtn) showPag(abaAtiva, abaBtn);
+  }
 });

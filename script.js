@@ -2,11 +2,9 @@ function toggleFaq(btn) {
   const resposta = btn.nextElementSibling;
   const aberta = resposta.classList.contains('aberta');
 
-  // fecha todos
   document.querySelectorAll('.faq-resposta').forEach(r => r.classList.remove('aberta'));
   document.querySelectorAll('.faq-pergunta').forEach(b => b.classList.remove('aberta'));
 
-  // abre o clicado se estava fechado
   if (!aberta) {
     resposta.classList.add('aberta');
     btn.classList.add('aberta');
@@ -43,8 +41,8 @@ function showPage(id, btn) {
   if (id === 'doacao') resetDoacaoTab();
 
   localStorage.setItem('paginaAtiva', id);
-  window.scrollTo(0, 0);
   closeMobileMenu();
+  window.scrollTo(0, 0);
 }
 
 function showPag(id, btn) {
@@ -133,8 +131,9 @@ window.addEventListener('load', () => {
   const paginaAtiva = localStorage.getItem('paginaAtiva');
   if (paginaAtiva && paginaAtiva !== 'home') {
     const pageBtn = document.querySelector(`.nav-link[data-page="${paginaAtiva}"]`);
-    if (pageBtn) showPage(paginaAtiva, pageBtn);
+    showPage(paginaAtiva, pageBtn || null);
   }
+
   const abaAtiva = localStorage.getItem('abaAtiva');
   if (abaAtiva) {
     const abaBtn = document.querySelector(`[onclick="showPag('${abaAtiva}', this)"]`);

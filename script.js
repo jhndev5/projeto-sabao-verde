@@ -35,8 +35,15 @@ function showPage(id, btn) {
   document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
 
   const page = document.getElementById('page-' + id);
-  if (page) page.classList.add('active');
-  if (btn) btn.classList.add('active');
+  if (!page) {
+    console.warn(`Página não encontrada: page-${id}`);
+    return;
+  }
+
+  page.classList.add('active');
+
+  const activeNavButton = btn || document.querySelector(`.nav-link[data-page="${id}"]`);
+  if (activeNavButton) activeNavButton.classList.add('active');
 
   if (id === 'doacao') resetDoacaoTab();
 
